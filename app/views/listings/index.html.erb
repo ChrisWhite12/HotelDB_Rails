@@ -1,6 +1,6 @@
 <h1>Index</h1>
 <ul>
 <% @listings.each_with_index{ |list,ind| %>
-    <li><%= list[:name] %></li>
+    <li><%= list[:name] %> <%= link_to "View", "/listings/#{list[:id]}" %></li>
 <%}%>
 </ul>

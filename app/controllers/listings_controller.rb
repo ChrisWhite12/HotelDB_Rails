@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
 
     def show
         @listing = Listing.find(params[:id])
+        @rooms = Room.where(listing_id: params[:id])
     end
 
     

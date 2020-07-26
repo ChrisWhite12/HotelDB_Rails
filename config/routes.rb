@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   #Show all listings
   # get "/listing", to: "listings#index", as: "listings"
   #create listing
-  get "/listing/new", to: "listings#new", as: "new_listing"
+  get "/listings/new", to: "listings#new", as: "new_listing"
   #show listing
-  get "/listing/:id", to: "listings#show", as: "listing"
+  get "/listings/:id", to: "listings#show", as: "listing"
   #create listing
-  post "/listing", to: "listings#create", as: "create_listing"
+  post "/listings", to: "listings#create", as: "create_listing"
   #delete listing
-  delete "/listing/:id", to: "listings#destroy", as: "delete_listing"
+  delete "/listings/:id", to: "listings#destroy", as: "delete_listing"
 
 
 end

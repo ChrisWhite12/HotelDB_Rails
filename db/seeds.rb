@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 for i in 1..10
-    Listing.create(name: "#{Faker::Address.city} Hotel")
+    Listing.create(name: "#{Faker::Address.city} Hotel", location: Faker::Address.street_address)
     puts "created #{i} records \n"
+    for j in 1..3
+        Room.create(name: "Double Room", price: 150, no_people: 2, aval: true, listing_id: i)
+    end
+    for j in 1..3
+        Room.create(name: "Single Room", price: 150, no_people: 1, aval: true, listing_id: i)
+    end
 end
+
+pp Listing.all

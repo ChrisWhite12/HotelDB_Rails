@@ -1,1 +1,10 @@
 <h1>Show Listing</h1>
+<h2><%= @listing[:name]%></h2>
+<p>Address: <%= @listing[:location]%></p>
+<p>Id: <%= @listing[:id]%></p>
+
+<ul>
+<% @rooms.each{|r| %>
+    <li><%= r[:name]%> $<%= r[:price]%> <%= r[:no_people]%>ppl  Vacant: <%= r[:aval]%></li>
+<%}%>
+</ul>
