@@ -5,6 +5,6 @@
 
 <ul>
 <% @rooms.each{|r| %>
-    <li><%= r[:name]%> $<%= r[:price]%> <%= r[:no_people]%>ppl  Vacant: <%= r[:aval]%></li>
+    <li><%= r[:name]%> $<%= r[:price]%> <%= r[:no_people]%>ppl  Vacant: <%= r[:aval]%> Date: <%= r.booking[:date]%></li>
 <%}%>
 </ul>
