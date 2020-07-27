@@ -1,0 +1,26 @@
+<h1>Home Page</h1>
+<ul>
+    <p>Account</p>
+    <li><%= link_to "Listing", listings_path %></li>
+    <p>Bookings</p>
+    <p>Sign Out/(Login or Register)</p>
+</ul>
+<form action = "<%=search_path%>" method = "GET">
+    <div>
+        <label>Location: </label>
+        <input type="text">
+    </div>
+    <div>
+        <label>People: </label>
+        <input type="number" step="1" min="1" max="4">
+    </div>
+    <div>
+        <label>From: </label>
+        <input type="date">
+    </div>
+    <div>
+        <label>To: </label>
+        <input type="date">
+    </div>
+    <input type="submit" value="Search">
+</form>

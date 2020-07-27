@@ -3,4 +3,7 @@
 <% @listings.each_with_index{ |list,ind| %>
     <li><%= list[:name] %> <%= link_to "View", "/listings/#{list[:id]}" %></li>
 <%}%>
+
+
+<li><%= link_to "New Listing", new_listing_path %></li>
 </ul>

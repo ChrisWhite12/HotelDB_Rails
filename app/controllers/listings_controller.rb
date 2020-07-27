@@ -33,17 +33,16 @@ class ListingsController < ApplicationController
     
     def update
         list_update = Listing.find_by(id: (params[:id]).to_i)
-        list_update.update(fname: params[:listing][:fname])
-        list_update.update(lname: params[:listing][:lname])
         redirect_to listings_path
     end
 
     def create
-        # @listing = listing.new(params[:listing])
-        @listing = listing.create([
-        fname: params[:listing][:fname],
-        lname: params[:listing][:lname]]
-        )
+        listing_params = params.require(:listing).permit(:name,:location)
+        #create the listing
+            @listing = Listing.create(listing_params)
+        #create the bookings
+
+        #create the rooms with links
         redirect_to listings_path
     end
 
