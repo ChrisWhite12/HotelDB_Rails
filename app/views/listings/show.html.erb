@@ -8,3 +8,5 @@
     <li><%= r[:name]%> $<%= r[:price]%>pp <%= r[:no_people]%>ppl Vacant: <%= r[:aval]%> Date: <%= r.booking[:date]%></li>
 <%}%>
 </ul>
+
+<%= link_to "Edit Listing", "/listings/#{params[:id]}/edit"%>
