@@ -38,11 +38,22 @@ class ListingsController < ApplicationController
 
     def create
         listing_params = params.require(:listing).permit(:name,:location)
+        booking_params = params.require(:booking).permit(:date)
+        room_params = params.require(:room).permit(:name,:price,:no_people)
+        days_params = params.require(:days_num).to_i
+        
         #create the listing
-            @listing = Listing.create(listing_params)
+        @listing = Listing.create(listing_params)
         #create the bookings
+        for i in 1..days_params
+            @booking = Booking.create(booking_params)
+            pp @booking
+            #create the rooms with links
+            @room = Room.create(listing_id: @listing[:id], booking_id: @booking[:id])
+            @room.update(room_params)
+        end
+        
 
-        #create the rooms with links
         redirect_to listings_path
     end
 

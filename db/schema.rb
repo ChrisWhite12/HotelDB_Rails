@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_041531) do
+ActiveRecord::Schema.define(version: 2020_07_28_015916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2020_07_27_041531) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer "street_no"
+    t.string "street_name"
+    t.string "suburb"
+    t.string "state"
+    t.integer "postcode"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.date "date"
     t.boolean "aval"
@@ -48,6 +58,30 @@ ActiveRecord::Schema.define(version: 2020_07_27_041531) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "card_no"
+    t.string "card_name"
+    t.integer "CSV"
+    t.date "expiry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "fname"
+    t.string "lname"
+    t.string "role"
+    t.integer "phone"
+    t.bigint "payment_id", null: false
+    t.bigint "address_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_profiles_on_address_id"
+    t.index ["payment_id"], name: "index_profiles_on_payment_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -63,7 +97,22 @@ ActiveRecord::Schema.define(version: 2020_07_27_041531) do
     t.index ["listing_id"], name: "index_rooms_on_listing_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "profiles", "addresses"
+  add_foreign_key "profiles", "payments"
+  add_foreign_key "profiles", "users"
   add_foreign_key "rooms", "bookings"
   add_foreign_key "rooms", "listings"
 end
