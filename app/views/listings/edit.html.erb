@@ -1,1 +1,7 @@
 <h1>Edit Listing</h1>
+<%= form_with model: @listing do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+<% end %>

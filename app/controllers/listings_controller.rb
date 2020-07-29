@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
     before_action :print_params
+    before_action :set_listing, only: [:show, :edit, :update, :destroy]
     # after_action :print_db
 
     def print_params
@@ -21,18 +22,18 @@ class ListingsController < ApplicationController
     end 
 
     def show
-        @listing = Listing.find(params[:id])
         @rooms = Room.where(listing_id: params[:id])
     end
 
     
     
     def edit
-        @listing = Listing.find(params[:id])
+        @rooms = Room.where(listing_id: params[:id])
     end
     
     def update
-        list_update = Listing.find_by(id: (params[:id]).to_i)
+        @listing.update(name: params[:listing][:name])
+        @listing.update(location: params[:listing][:location])
         redirect_to listings_path
     end
 
@@ -57,8 +58,13 @@ class ListingsController < ApplicationController
     end
 
     def destroy
-        list_del = Listing.find_by(id: (params[:id]).to_i)
-        list_del.destroy
+        @listing.destroy
         redirect_to listings_path
+    end
+
+    private
+    def set_listing
+        id = params[:id]
+        @listing = Listing.find(id)
     end
 end

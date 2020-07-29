@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "/listings/:id/edit", to: "listings#edit", as: "edit_listing"
   #create listing
   post "/listings", to: "listings#create", as: "create_listing"
+  #update listing
+  patch "/listings/:id", to: "listings#update", as: "update_listing"
   #delete listing
   delete "/listings/:id", to: "listings#destroy", as: "delete_listing"
 
