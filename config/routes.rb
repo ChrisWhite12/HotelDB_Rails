@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #result
   get "/search/:id", to: "pages#result", as:"result"
 
+  get "/listings/:id(/:room_name)", to: "rooms#show", as: "room"
 
   #bookings
   get "/bookings", to: "bookings#index", as: "bookings"  

@@ -4,9 +4,9 @@
 <p>Id: <%= @listing[:id]%></p>
 
 <ul>
-<% @rooms.each{|r| %>
-    <li><%= r[:name]%> $<%= r[:price]%>pp <%= r[:no_people]%>ppl Vacant: <%= r.booking[:aval]%> Date: <%= r.booking[:date]%></li>
-<%}%>
+<% @room_names.each { |r| %>
+    <li><%= link_to r, "/listings/#{params[:id]}/#{r}"%></li>
+<% } %>
 </ul>
 
 <%= link_to "Edit Listing", "/listings/#{params[:id]}/edit"%>

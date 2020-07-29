@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
     end 
 
     def show
+        @room_names = Room.where(listing_id: params[:id]).distinct.pluck(:name)
         @rooms = Room.where(listing_id: params[:id])
     end
 
