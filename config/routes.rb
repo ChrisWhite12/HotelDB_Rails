@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #pages
+  get "/", to: "pages#home", as:"root"
 
   #Show all listings
   get "/listings", to: "listings#index", as: "listings"
@@ -17,13 +19,7 @@ Rails.application.routes.draw do
   #delete listing
   delete "/listings/:id", to: "listings#destroy", as: "delete_listing"
 
-  #pages
-  get "/", to: "pages#home", as:"root"
-  #results
-  get "/search", to: "pages#search", as:"search"
-  #result
-  get "/search/:id", to: "pages#result", as:"result"
-
+  #show room
   get "/listings/:id(/:room_name)", to: "rooms#show", as: "room"
 
   #bookings
@@ -31,6 +27,8 @@ Rails.application.routes.draw do
 
   #profile
   get "/profiles", to: "profiles#index", as: "profiles"
+  #new profile
+  get "/profiles/new", to: "profiles#new", as:"new_profile"
   #view profile
   get "/profiles/:id", to: "profiles#show", as: "profile"
   #edit profile

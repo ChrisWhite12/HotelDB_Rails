@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_015916) do
+ActiveRecord::Schema.define(version: 2020_07_31_064810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2020_07_28_015916) do
     t.boolean "aval"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "room_id", null: false
+    t.index ["room_id"], name: "index_bookings_on_room_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -92,8 +94,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_015916) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "listing_id", null: false
-    t.bigint "booking_id", null: false
-    t.index ["booking_id"], name: "index_rooms_on_booking_id"
     t.index ["listing_id"], name: "index_rooms_on_listing_id"
   end
 
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(version: 2020_07_28_015916) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "rooms"
   add_foreign_key "profiles", "addresses"
   add_foreign_key "profiles", "payments"
   add_foreign_key "profiles", "users"
-  add_foreign_key "rooms", "bookings"
   add_foreign_key "rooms", "listings"
 end

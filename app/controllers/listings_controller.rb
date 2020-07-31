@@ -18,6 +18,7 @@ class ListingsController < ApplicationController
     end
 
     def index
+        #if a search, get params
         @listings = Listing.all
     end 
 

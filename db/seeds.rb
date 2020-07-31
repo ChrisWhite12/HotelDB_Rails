@@ -10,10 +10,11 @@ for i in 1..4
     Listing.create(name: "#{Faker::Address.city} Hotel", location: Faker::Address.street_address)
     puts "created #{i} records \n"
     #fix
-    for k in 0..4
-        for j in 1..4
-            book1 = Booking.create(date: (Date.parse('01/08/2020') + k), aval: true)
-            Room.create(name: "Room 1#{(j.to_s).rjust(2,"0")}", price: 150, no_people: 2, aval: true, listing_id: i, booking_id: book1[:id])
+    for j in 1..4
+        for k in 0..4
+            room_temp = Room.create(name: "Room 1#{(j.to_s).rjust(2,"0")}", price: 150, no_people: 2, aval: true, listing_id: i)
+            Booking.create(date: (Date.parse('01/08/2020') + k), aval: true, room_id: room_temp[:id])
+            
         end
     end
 end

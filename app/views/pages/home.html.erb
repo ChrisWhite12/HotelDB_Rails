@@ -1,20 +1,20 @@
 <h1>Home Page</h1>
-<form action = "<%=search_path%>" method = "GET">
+<form action = "<%=listings_path%>" method = "GET">
     <div>
         <label>Location: </label>
-        <input type="text">
+        <input type="text" name="location">
     </div>
     <div>
         <label>People: </label>
-        <input type="number" step="1" min="1" max="4">
+        <input type="number" step="1" min="1" max="4" name="no_people">
     </div>
     <div>
         <label>From: </label>
-        <input type="date">
+        <input type="date" name="date_from">
     </div>
     <div>
         <label>To: </label>
-        <input type="date">
+        <input type="date" name="date_to">
     </div>
     <input type="submit" value="Search">
 </form>
