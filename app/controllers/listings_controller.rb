@@ -23,7 +23,6 @@ class ListingsController < ApplicationController
     end 
 
     def show
-        @room_names = Room.where(listing_id: params[:id]).distinct.pluck(:name)
         @rooms = Room.where(listing_id: params[:id])
     end
 
@@ -46,14 +45,13 @@ class ListingsController < ApplicationController
         
         #create the listing
         @listing = Listing.create(listing_params)
+        #create the rooms
+        @room = Room.create(listing_id: @listing[:id], aval: true)
+        @room.update(room_params)
 
-        #create the bookings
         for i in 0..days_params
-            @booking = Booking.create(date: (Date.parse(params[:booking][:date]) + i), aval: true)
-            pp @booking
-            #create the rooms with links
-            @room = Room.create(listing_id: @listing[:id], booking_id: @booking[:id])
-            @room.update(room_params)
+            #create bookings
+            @booking = Booking.create(date: (Date.parse(params[:booking][:date]) + i), aval: true, room_id: @room[:id])
         end
         
         redirect_to listings_path

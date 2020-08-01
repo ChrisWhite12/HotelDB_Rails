@@ -4,8 +4,9 @@
 <p>Id: <%= @listing[:id]%></p>
 
 <ul>
-<% @room_names.each { |r| %>
-    <li><%= link_to r, "/listings/#{params[:id]}/#{r}"%></li>
+
+<% @rooms.each { |r| %>
+    <li><%= link_to r[:name], "/listings/#{params[:id]}/#{r[:id]}"%></li>
 <% } %>
 </ul>
 

@@ -1,4 +1,11 @@
 <h1>Show Room</h1>
-<% @rooms.each{ |r| %>
-    <li> Date: <%= r.booking[:date] %> Vacant: <%= r.booking[:aval] %> Price: <%= r[:price] %>  No. People <%= r[:no_people] %> </li>
+
+<p>Room: <%= @room[:name]%></p>
+<p>$<%= @room[:price]%></p>
+<p>No. people: <%= @room[:no_people]%></p>
+
+<ul>
+<% @bookings.each{ |b| %>
+    <li> Date: <%= b[:date] %> Vacant: <%= b[:aval] %></li>
 <% } %>
+</ul>
