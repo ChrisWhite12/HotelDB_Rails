@@ -1,9 +1,25 @@
 <h1>Index</h1>
-<ul>
+<div class="main_sec">
+<div>
 <% @listings.each{ |list| %>
-    <li><%= list[:name] %> <%= link_to "View", "/listings/#{list[:id]}" %></li>
+
+    <div class="card mb-3" style="max-width: 800px; width: 60vw">
+    <div class="row no-gutters">
+        <div class="col-md-3">
+        <img src="https://placekitten.com/200/200" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title"><%= list[:name] %></h5>
+            <p><%= list[:location] %></p>
+            <%= link_to "View", "/listings/#{list[:id]}" %>
+        </div>
+        </div>
+    </div>
+    </div>
 <%}%>
+</div>
 
 
 <li><%= link_to "New Listing", new_listing_path %></li>
-</ul>
+</div>
