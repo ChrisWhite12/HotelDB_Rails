@@ -12,4 +12,7 @@ class PagesController < ApplicationController
 
     end
 
+    def payment
+
+    end
 end

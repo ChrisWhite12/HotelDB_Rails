@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   delete "/listings/:id", to: "listings#destroy", as: "delete_listing"
 
   #show room
-  get "/listings/:id(/:room_id)", to: "rooms#show", as: "room"
+  get "/rooms/:room_id", to: "rooms#show", as: "room"
 
   #bookings
   get "/bookings", to: "bookings#index", as: "bookings"  
@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   #edit profile
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
 
+  get "/pages/payment", to: "pages#payment", as: "payment_page"
   get "/payments", to: "payments#index", as: "payments"
+
   get "/addresses", to: "addresses#index", as: "addresses"
 
 end

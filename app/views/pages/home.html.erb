@@ -1,20 +1,22 @@
 <h1>Home Page</h1>
-<form action = "<%=listings_path%>" method = "GET">
-    <div>
-        <label>Location: </label>
-        <input type="text" name="search[location]">
-    </div>
-    <div>
-        <label>People: </label>
-        <input type="number" step="1" min="1" max="4" name="search[no_people]">
-    </div>
-    <div>
-        <label>From: </label>
-        <input type="date" name="search[date_from]">
-    </div>
-    <div>
-        <label>To: </label>
-        <input type="date" name="search[date_to]">
-    </div>
-    <input type="submit" value="Search">
-</form>
+<div class="main_sec">
+    <form action = "<%=listings_path%>" method = "GET" class="search_bar">
+        <div>
+            <label>Location: </label>
+            <input type="text" name="search[location]">
+        </div>
+        <div>
+            <label>People: </label>
+            <input type="number" step="1" min="1" max="4" name="search[no_people]">
+        </div>
+        <div>
+            <label>From: </label>
+            <input type="date" name="search[date_from]">
+        </div>
+        <div>
+            <label>To: </label>
+            <input type="date" name="search[date_to]">
+        </div>
+        <input type="submit" value="Search">
+    </form>
+</div>

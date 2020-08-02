@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
         pp @search
         p @search['no_people']
         # @rooms = Rooms.where(no_people: params[:search][:no_people])
+        @booking_text = ""
 
         if @search != {}
             @rooms_list = Room.where("listing_id = ? AND no_people = ?", params[:id], @search["no_people"].to_i)
@@ -45,6 +46,7 @@ class ListingsController < ApplicationController
                     p "pushed #{r}"
                 end
             }
+            @booking_text = "Book for #{@search["date_from"]} - #{@search["date_to"]}"
         else
             @rooms = Room.where(listing_id: params[:id])
         end

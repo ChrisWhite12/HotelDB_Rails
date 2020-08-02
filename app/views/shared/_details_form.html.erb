@@ -1,0 +1,33 @@
+<%= form_with (model: @profile, local: true) do |form| %>
+    <%= form.label :fname %>
+    <%= form.text_field :fname %>
+    <%= form.label :lname %>
+    <%= form.text_field :lname %>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+
+
+<h3>Payment Details</h3>
+    <%= form.label :card_no %>
+    <%= form.text_field :card_no %>
+    <%= form.label :card_name %>
+    <%= form.text_field :card_name %>
+    <%= form.label :CSV %>
+    <%= form.text_field :CSV %>
+    <%= form.label :expiry %>
+    <%= form.text_field :expiry %>
+
+<h3>Address Details</h3>
+    <%= form.label :street_no %>
+    <%= form.text_field :street_no %>
+    <%= form.label :street_name %>
+    <%= form.text_field :street_name %>
+    <%= form.label :suburb %>
+    <%= form.text_field :suburb %>
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode %>
+
+    <%= form.submit%>
+<% end %>
