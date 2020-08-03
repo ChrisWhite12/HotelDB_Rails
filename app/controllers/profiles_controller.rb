@@ -6,30 +6,42 @@ class ProfilesController < ApplicationController
             redirect_to new_profile_path
         elsif !user_signed_in?
             redirect_to new_user_session_path
+        elsif user_signed_in? && Profile.find_by(user_id: current_user[:id])
+            redirect_to profile_path(current_user[:id])
         end
     end
 
     def new
         @profile = Profile.new()
-        @address = Address.new()
-        @payment = Payment.new()
-        p @payment
-        p 'NEW'
+    end
+
+    def create
+        p "----------"
+        p profile_params
+        p profile_params[:payments]
+        p profile_params[:address]
+
+        @payment = Payment.create(profile_params[:payment])
+        @address = Address.create(profile_params[:address])
+        @profile = Profile.create(fname: profile_params[:fname], lname: profile_params[:lname], phone: profile_params[:phone], address_id: @address.id, payment_id: @payment.id, user_id: current_user.id, role: "customer")
+        # @profile = Profile.create([profile_params, role: "customer"])
+        redirect_to root_path
     end
 
     def show
-
+        @profiles = Profile.all()
+        pp @profiles
+        @profile = Profile.find(params[:id])
     end
     
     def edit
-
+        @profile = Profile.find(params[:id])
+        @address = @profile.address
+        @payment = @profile.payment
+        pp @address
     end
 
-    def save_data
-        p 'SAVE DATA'
-        @address.save
-        @payment.save
-        @profile.save
-
+    def profile_params
+        params.require(:profile).permit(:fname, :lname, :phone, address:[:street_no, :street_name, :suburb, :state, :postcode], payment: [:card_no, :card_name, :CSV, :expiry])
     end
 end
