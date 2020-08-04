@@ -19,8 +19,18 @@ Rails.application.routes.draw do
   #delete listing
   delete "/listings/:id", to: "listings#destroy", as: "delete_listing"
 
+  #new rooms
+  get "/rooms/new/:list_id", to: "rooms#new", as: "new_room"
+  #create room
+  post "/rooms/:list_id", to: "rooms#create", as: "create_room"
   #show room
-  get "/rooms/:room_id", to: "rooms#show", as: "room"
+  get "/rooms/:id", to: "rooms#show", as: "room"
+  #edit room
+  get "/rooms/:id/edit", to: "rooms#edit", as: "edit_room"
+  #update room
+  patch "/rooms/:id", to: "rooms#update", as: "update_room"
+  #delete room
+  delete "/rooms/:id", to: "rooms#destroy", as: "delete_room"
 
   #bookings
   get "/bookings", to: "bookings#index", as: "bookings"  

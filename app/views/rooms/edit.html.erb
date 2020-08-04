@@ -1,0 +1,28 @@
+<div class="main_sec">
+    <h3>Room: <%= @room[:name]%></h3>
+    <p>Id: <%= @room[:id]%></p>
+    
+    <%= form_with(model: @room) { |form|%>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+        <%= form.label :price %>
+        <%= form.text_field :price %>
+        <%= form.label :no_people %>
+        <%= form.text_field :no_people %>
+        <%= form.submit %>
+    <% } %>
+    
+    <%= link_to "Delete Room", delete_room_path(@room[:id]),method: :delete, data: {confirm: "Are you sure?"}%>
+
+    <%= month_calendar events: @bookings do |date, bookings| %>
+        <%= date.day %>
+        <% bookings.each do |b| %>
+            <% if b[:aval] %>
+                <p>Vacant</p>
+            <% else %>
+                <p>No Vacancy</p>
+            <% end %>
+        <% end %>
+    <% end %>
+
+</div>

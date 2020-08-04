@@ -7,3 +7,5 @@
     <%= form.submit %>
 <% end %>
 
+<%= link_to "Delete Listing", delete_listing_path(@listing[:id]),method: :delete, data: {confirm: "Are you sure?"}%>
+

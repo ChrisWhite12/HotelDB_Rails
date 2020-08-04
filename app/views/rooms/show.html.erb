@@ -1,11 +1,18 @@
-<h1>Show Room</h1>
+<div class="main_sec">
+    <h3>Room: <%= @room[:name]%></h3>
+    <p>Id: <%= @room[:id]%></p>
+    <p>$<%= @room[:price]%> - No. people: <%= @room[:no_people]%></p>
+    <%= link_to "Edit Room", edit_room_path(@room[:id])%>
 
-<p>Room: <%= @room[:name]%></p>
-<p>$<%= @room[:price]%></p>
-<p>No. people: <%= @room[:no_people]%></p>
+    <%= month_calendar events: @bookings do |date, bookings| %>
+        <%= date.day %>
+        <% bookings.each do |b| %>
+            <% if b[:aval] %>
+                <p>Vacant</p>
+            <% else %>
+                <p>No Vacancy</p>
+            <% end %>
+        <% end %>
+    <% end %>
 
-<ul>
-<% @bookings.each{ |b| %>
-    <li> Date: <%= b[:date] %> Vacant: <%= b[:aval] %></li>
-<% } %>
-</ul>
+</div>

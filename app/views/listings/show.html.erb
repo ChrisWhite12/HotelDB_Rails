@@ -8,6 +8,7 @@
 <% @rooms.each { |r| %>
     <li><%= link_to r[:name], room_path(r.id)%> <%= link_to @booking_text, payment_page_path%> </li>
 <% } %>
+    <li><%= link_to "New Room", new_room_path(params[:id]) %></li>
 </ul>
 
 <%= link_to "Edit Listing", "/listings/#{params[:id]}/edit"%>

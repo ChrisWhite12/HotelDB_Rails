@@ -1,0 +1,27 @@
+<h1>New Room</h1>
+<form action = "<%=create_room_path(@listing.id)%>" method = "POST">
+    <input type="hidden" value="<%=form_authenticity_token%>" name="authenticity_token">
+    <div>
+        <label> Booking Start: </label>
+        <input type="date" name="booking[date]">
+    </div>
+    <div>
+        <label> Days: </label>
+        <input type="number" min="1" max="100" name="days_num">
+    </div>
+    <h2>Rooms</h2>
+    <div>
+        <label>Name: </label>
+        <input type="text" name="room[name]">
+    </div>
+    <div>
+        <label>Price: </label>
+        <input type="number" name="room[price]">
+    </div>
+    <div>
+        <label>No. people: </label>
+        <input type="number" name="room[no_people]">
+    </div>
+    
+    <input type="submit" value="Create">
+</form>
