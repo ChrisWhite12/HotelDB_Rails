@@ -6,7 +6,7 @@
     <%= form.label :phone %>
     <%= form.text_field :phone%>
 
-    <%= form.fields_for :payment do |pay_form|%>
+    <%= form.fields_for @payment do |pay_form|%>
         <h3>Payment Details</h3>
         <%= pay_form.label :card_no %>
         <%= pay_form.text_field :card_no %>
@@ -18,7 +18,7 @@
         <%= pay_form.text_field :expiry %>
     <% end %>
 
-    <%= form.fields_for :address do |add_form|%>
+    <%= form.fields_for @address do |add_form|%>
     <h3>Address Details</h3>
         <%= add_form.label :street_no %>
         <%= add_form.text_field :street_no %>

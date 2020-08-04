@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get "/profiles/:id", to: "profiles#show", as: "profile"
   #edit profile
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
+  #update profile
+  patch "/profiles/:id", to: "profiles#update", as: "update_profile"
   #create profile
   post "/profiles", to: "profiles#create", as:"create_profile"
 
