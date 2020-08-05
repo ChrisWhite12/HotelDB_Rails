@@ -16,10 +16,6 @@ class ProfilesController < ApplicationController
         p "*****************************************"
         p "Inside new method just rendering the form"
         @profile = Profile.new()
-        # @profile.address.build
-        # @profile.payment.build
-        # @profile.build_address
-        # @profile.build_payment
         @address = Address.new()
         @payment = Payment.new()
     end

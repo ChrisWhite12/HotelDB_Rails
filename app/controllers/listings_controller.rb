@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+    load_and_authorize_resource
     before_action :print_params
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
     # after_action :print_db
@@ -14,7 +15,26 @@ class ListingsController < ApplicationController
     end
 
     def new
+        @listing = Listing.new()
+    end
+
+    def create
+        days_params = params.require(:days_num).to_i
+
+        #create the listing
+        @listing = Listing.new(listing_params)
+        @listing.update(user_id: current_user[:id])
+
+        #create the rooms
+        @room = Room.create(listing_id: @listing[:id], aval: true)
+        @room.update(room_params)
+
+        for i in 0..days_params
+            #create bookings
+            @booking = Booking.create(date: (Date.parse(params[:booking][:date]) + i), aval: true, room_id: @room[:id])
+        end
         
+        redirect_to listings_path
     end
 
     def index
@@ -25,7 +45,7 @@ class ListingsController < ApplicationController
             session[:search] = search_params
             @listings = Listing.where(location: params[:search][:location].downcase.capitalize)
         else
-            @listings = Listing.all
+            @listings = Listing.where(user_id: current_user.id)
         end
     end 
 
@@ -66,24 +86,7 @@ class ListingsController < ApplicationController
         redirect_to listings_path
     end
 
-    def create
-        listing_params = params.require(:listing).permit(:name,:location)
-        room_params = params.require(:room).permit(:name,:price,:no_people)
-        days_params = params.require(:days_num).to_i
-        
-        #create the listing
-        @listing = Listing.create(listing_params)
-        #create the rooms
-        @room = Room.create(listing_id: @listing[:id], aval: true)
-        @room.update(room_params)
 
-        for i in 0..days_params
-            #create bookings
-            @booking = Booking.create(date: (Date.parse(params[:booking][:date]) + i), aval: true, room_id: @room[:id])
-        end
-        
-        redirect_to listings_path
-    end
 
     def destroy
         @listing.destroy
@@ -111,6 +114,14 @@ class ListingsController < ApplicationController
     def set_listing
         id = params[:id]
         @listing = Listing.find(id)
+    end
+
+    def listing_params
+        params.require(:listing).permit(:name,:location)
+    end
+
+    def room_params
+        params.require(:room).permit(:name,:price,:no_people)
     end
 
     def search_params

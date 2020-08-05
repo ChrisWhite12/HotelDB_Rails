@@ -6,7 +6,7 @@
     <div class="card mb-3" style="max-width: 800px; width: 60vw">
     <div class="row no-gutters">
         <div class="col-md-3">
-        <img src="https://placekitten.com/200/200" class="card-img" alt="...">
+        <img src="https://placekitten.com/200/100" class="card-img" alt="...">
         </div>
         <div class="col-md-8">
         <div class="card-body">
@@ -21,5 +21,5 @@
 </div>
 
 
-<li><%= link_to "New Listing", new_listing_path %></li>
+<li><% if can? :create, Listing %><%= link_to "New Listing", new_listing_path %><% end %></li>
 </div>
