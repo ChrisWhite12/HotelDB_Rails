@@ -117,7 +117,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit(:name,:location)
+        params.require(:listing).permit(:name,:location, :picture)
     end
 
     def room_params

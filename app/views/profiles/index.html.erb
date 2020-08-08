@@ -1,2 +1,5 @@
 <h1>Profile Index</h1>
-<%= link_to "Profile 1", "/profiles/1" %>
+<% @profiles.each{ |profile| %>
+    <p><%= profile[:fname]%> <%= profile[:lname]%> <%= profile.user[:email]%> <%= profile.user[:admin]%> <%= profile.user[:id]%> <%= profile[:id]%></p>
+    <%= link_to "Edit Profile", edit_profile_path(profile.id)%>
+<%}%>
