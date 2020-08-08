@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import "simple_calendar";
 
 .main_sec{
     display: flex;
