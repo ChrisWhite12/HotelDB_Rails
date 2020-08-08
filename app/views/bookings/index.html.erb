@@ -1,1 +1,6 @@
 <h1>Booking Index</h1>
+<% @bookings.each{ |booking| %>
+    <p>Listing: <%= booking.room.listing[:name] %>, Room: <%= booking.room[:name]%>, Date: <%= booking[:date]%></p>
+
+
+<% } %>

@@ -1,36 +1,21 @@
 <h1>Enter Details</h1>
 
-<%= form_with model: @profile do |form| %>
-    <%= form.label :fname %>
-    <%= form.text_field :fname %>
-    <%= form.label :lname %>
-    <%= form.text_field :lname %>
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-<% end %>
+<p>First Name: <%= @profile[:fname]%></p>
+<p>Last Name: <%= @profile[:lname]%></p>
+<p>Phone: <%= @profile[:phone]%></p>
 
-<h3>Payment Details</h3>
-<%= form_with model: @payment do |form| %>
-    <%= form.label :card_no %>
-    <%= form.text_field :card_no %>
-    <%= form.label :card_name %>
-    <%= form.text_field :card_name %>
-    <%= form.label :CSV %>
-    <%= form.text_field :CSV %>
-    <%= form.label :expiry %>
-    <%= form.text_field :expiry %>
-<% end %>
+<p>Card No.: ****<%= @profile.payment[:card_no].to_s.slice(-4,4)%></p>
 
-<h3>Address Details</h3>
-<%= form_with model: @address do |form| %>
-    <%= form.label :street_no %>
-    <%= form.text_field :street_no %>
-    <%= form.label :street_name %>
-    <%= form.text_field :street_name %>
-    <%= form.label :suburb %>
-    <%= form.text_field :suburb %>
-    <%= form.label :state %>
-    <%= form.text_field :state %>
-    <%= form.label :postcode %>
-    <%= form.text_field :postcode %>
-<% end %>
+<p>Street No.: <%= @profile.address[:street_no]%></p>
+<p>Street Name: <%= @profile.address[:street_name]%></p>
+<p>Suburb: <%= @profile.address[:suburb]%></p>
+<p>State: <%= @profile.address[:state]%></p>
+<p>Postcode: <%= @profile.address[:postcode]%></p>
+
+<%= link_to "Edit Profile", edit_profile_path(Profile.find_by(user_id: current_user[:id]))%>
+
+<p>Room: <%= @room[:name]%>  $<%= @room[:price]%> <%= @room[:no_people]%>ppl 
+Total: $<%= @room[:price] * @room[:no_people] * (@date_to.to_date - @date_from.to_date).to_i %> 
+Nights: <%= (@date_to.to_date - @date_from.to_date).to_i %></p>
+<p>Dates: <%= @date_from %> to <%= @date_to %></p>
+<%= link_to "Confim Booking", pay_confirm_path(@room.id, @date_from, @date_to) %>

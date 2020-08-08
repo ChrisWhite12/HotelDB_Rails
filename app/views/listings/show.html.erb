@@ -6,9 +6,9 @@
 <ul>
 
 <% @rooms.each { |r| %>
-    <li><%= link_to r[:name], room_path(r.id)%> <%= link_to @booking_text, payment_page_path%> </li>
+    <li><%= link_to r[:name], room_path(r.id)%> <%= link_to @booking_text, payment_path(r.id,@search["date_from"],@search["date_to"]) %> </li>
 <% } %>
-    <li><%= link_to "New Room", new_room_path(params[:id]) %></li>
+    <li><% if can? :create, @listing %><%= link_to "New Room", new_room_path(params[:id]) %><% end %></li>
 </ul>
 
-<%= link_to "Edit Listing", "/listings/#{params[:id]}/edit"%>
+<% if can? :update, @listing%><%= link_to "Edit Listing", edit_listing_path(params[:id]) %><% end %>

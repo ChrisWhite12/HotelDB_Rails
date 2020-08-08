@@ -43,10 +43,13 @@ Rails.application.routes.draw do
   get "/profiles/:id", to: "profiles#show", as: "profile"
   #edit profile
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
+  #update profile
+  patch "/profiles/:id", to: "profiles#update", as: "update_profile"
   #create profile
   post "/profiles", to: "profiles#create", as:"create_profile"
 
-  get "/pages/payment", to: "pages#payment", as: "payment_page"
+  get "/pages/payment/:room_id", to: "pages#payment", as: "payment"
+  get "/pages/pay_confirm/:room_id/:date_from/:date_to", to: "pages#pay_confirm", as: "pay_confirm"
   get "/payments", to: "payments#index", as: "payments"
 
   get "/addresses", to: "addresses#index", as: "addresses"

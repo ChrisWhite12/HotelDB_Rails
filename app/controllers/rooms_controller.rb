@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+    load_and_authorize_resource
     before_action :set_room, only: [:show, :edit, :update, :destroy]
     before_action :set_listing, only: [:new, :create]
     def show
@@ -12,7 +13,6 @@ class RoomsController < ApplicationController
     end
     
     def create
-        room_params = params.require(:room).permit(:name,:price,:no_people)
         days_params = params.require(:days_num).to_i
         
         #create the rooms
@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
             @booking = Booking.create(date: (Date.parse(params[:booking][:date]) + i), aval: true, room_id: @room[:id])
         end
         
-        redirect_to listings_path
+        redirect_to listing_path(@listing[:id])
     end
     
     def edit
@@ -55,5 +55,7 @@ class RoomsController < ApplicationController
         id = params[:id]
         @room = Room.find(id)
     end
-
+    def room_params
+        params.require(:room).permit(:name,:price,:no_people)
+    end
 end
