@@ -1,39 +1,16 @@
-<h1>New Listing</h1>
 
-<form action = "<%=create_listing_path%>" method = "POST">
-    <input type="hidden" value="<%=form_authenticity_token%>" name="authenticity_token">
+<%= form_with(model: @listing, local: true) do |form| %>
     <div>
-        <label>Name: </label>
-        <input type="text" name="listing[name]">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
     </div>
     <div>
-        <label>Location: </label>
-        <input type="text" name="listing[location]">
+        <%= form.label :location %>
+        <%= form.text_field :location %>
     </div>
     <div>
-        <label> Booking Start: </label>
-        <input type="date" name="booking[date]">
+        <%= form.label :picture, value="Image" %>
+        <%= form.file_field :picture %>
     </div>
-    <div>
-        <label> Days: </label>
-        <input type="number" min="1" max="100" name="days_num">
-    </div>
-
-    <h2>Rooms</h2>
-    <div>
-        <label>Name: </label>
-        <input type="text" name="room[name]">
-    </div>
-    <div>
-        <label>Price: </label>
-        <input type="number" name="room[price]">
-    </div>
-    <div>
-        <label>No. people: </label>
-        <input type="number" name="room[no_people]">
-    </div>
-    <div>
-        <button>Add Room</button>
-    </div>
-    <input type="submit" value="Create">
-</form>
+    <%= form.submit %>
+<% end %>

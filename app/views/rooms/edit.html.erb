@@ -3,12 +3,18 @@
     <p>Id: <%= @room[:id]%></p>
     
     <%= form_with(model: @room) { |form|%>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-        <%= form.label :price %>
-        <%= form.text_field :price %>
-        <%= form.label :no_people %>
-        <%= form.text_field :no_people %>
+        <div>
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+        </div>
+        <div>
+            <%= form.label :price %>
+            <%= form.text_field :price %>
+        </div>
+        <div>
+            <%= form.label :no_people %>
+            <%= form.text_field :no_people %>
+        </div>
         <%= form.submit %>
     <% } %>
     

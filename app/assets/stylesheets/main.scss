@@ -1,0 +1,15 @@
+@import "room.scss";
+
+.main_sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9e29c;
+    padding: 20px;
+}
+.search_input{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}

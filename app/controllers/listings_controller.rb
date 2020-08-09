@@ -19,20 +19,10 @@ class ListingsController < ApplicationController
     end
 
     def create
-        days_params = params.require(:days_num).to_i
 
         #create the listing
-        @listing = Listing.new(listing_params)
+        @listing = Listing.create(listing_params)
         @listing.update(user_id: current_user[:id])
-
-        #create the rooms
-        @room = Room.create(listing_id: @listing[:id], aval: true)
-        @room.update(room_params)
-
-        for i in 0..days_params
-            #create bookings
-            @booking = Booking.create(date: (Date.parse(params[:booking][:date]) + i), aval: true, room_id: @room[:id])
-        end
         
         redirect_to listings_path
     end
@@ -117,7 +107,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit(:name,:location, :picture)
+        params.require(:listing).permit(:name,:location,:picture)
     end
 
     def room_params

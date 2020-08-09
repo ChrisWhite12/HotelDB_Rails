@@ -1,17 +1,18 @@
 <h1>Profile Show</h1>
+<div class="main_sec">
+    <p>First Name: <%= @profile[:fname]%></p>
+    <p>Last Name: <%= @profile[:lname]%></p>
+    <p>Phone: <%= @profile[:phone]%></p>
 
-<p>First Name: <%= @profile[:fname]%></p>
-<p>Last Name: <%= @profile[:lname]%></p>
-<p>Phone: <%= @profile[:phone]%></p>
+    <p>Card No.: ****<%= @profile.payment[:card_no].to_s.slice(-4,4)%></p>
 
-<p>Card No.: ****<%= @profile.payment[:card_no].to_s.slice(-4,4)%></p>
-
-<p>Street No.: <%= @profile.address[:street_no]%></p>
-<p>Street Name: <%= @profile.address[:street_name]%></p>
-<p>Suburb: <%= @profile.address[:suburb]%></p>
-<p>State: <%= @profile.address[:state]%></p>
-<p>Postcode: <%= @profile.address[:postcode]%></p>
+    <p>Street No.: <%= @profile.address[:street_no]%></p>
+    <p>Street Name: <%= @profile.address[:street_name]%></p>
+    <p>Suburb: <%= @profile.address[:suburb]%></p>
+    <p>State: <%= @profile.address[:state]%></p>
+    <p>Postcode: <%= @profile.address[:postcode]%></p>
 
 
 
-<%= link_to "Edit Profile", edit_profile_path(Profile.find_by(user_id: current_user[:id]))%>
+    <%= link_to "Edit Profile", edit_profile_path(Profile.find_by(user_id: current_user[:id]))%>
+</div>
