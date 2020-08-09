@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-darh bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -8,7 +8,7 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to "Profile", profiles_path, :class => "nav-link" %>
+          <% if user_signed_in? %><%= link_to "Profile", profiles_path, :class => "nav-link" %><% end %>
         </li>
         
         <li class="nav-item">
@@ -16,7 +16,7 @@
         </li>
         
         <li class="nav-item">
-          <%= link_to "Bookings", bookings_path, :class => "nav-link" %>
+          <% if user_signed_in? %><%= link_to "Bookings", bookings_path, :class => "nav-link" %><% end %>
         </li>
 
         <% if user_signed_in? %>
@@ -27,5 +27,19 @@
           <li class="nav-item"><%= link_to "Sign In", new_user_session_path, :class => "nav-link" %></li>
           <li class="nav-item"><%= link_to "Register", new_user_registration_path, :class => "nav-link" %></li>
         <% end %>
+    </div>
+    <div>
+      <form action = "<%=listings_path%>" method = "GET" class="search_bar">
+        <label>Location: </label>
+        <input type="text" name="search[location]">
+        <label>People: </label>
+        <input type="number" step="1" min="1" max="4" name="search[no_people]" class="search_no_people">
+        <label>From: </label>
+        <input type="date" name="search[date_from]">
+        <label>To: </label>
+        <input type="date" name="search[date_to]">
+        <input type="submit" value="Search">
+      </form>
+
     </div>
   </nav>

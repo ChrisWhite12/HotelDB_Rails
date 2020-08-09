@@ -1,15 +1,47 @@
+$border_color1: #ffa837;
+$back_color1: #e9e29c;
+$back_color2: #f1cb92;
+
 @import "room.scss";
+body{
+    background-color: $back_color1;
+}
 
 .main_sec{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e9e29c;
-    padding: 20px;
+    background-color: $back_color1;
 }
 .search_input{
     display: flex;
     justify-content: space-between;
     margin: 5px;
+}
+.navbar{
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0px 0px 2px 2px $border_color1;
+    background-color: $back_color2 !important;
+    height: 20vh;
+}
+.search_no_people{
+    width: 50px;
+}
+.listing_img{
+    max-height: 200px;
+    max-width: 200px;
+    object-fit: scale-down;
+}
+.col-md-3{
+    border: 1px solid black
+}
+.back_1{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -13,8 +13,11 @@ class Ability
         can :manage, Listing, user_id: user.id
         can :manage, Room
         can :manage, Booking
-      else
+      elsif user.admin == 0
         can :read, [Room, Listing, Booking]
+        can :manage, Profile
+      else
+        can :read, Listing
       end
     #
     # The first argument to `can` is the action you are giving the user
