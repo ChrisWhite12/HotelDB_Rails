@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
     before_action :set_profile, only: [:payment]
 
     def home
@@ -35,8 +34,16 @@ class PagesController < ApplicationController
     end
 
     def set_profile
-        @profile = Profile.find_by(user_id: current_user[:id])
-        @address = @profile.address
-        @payment = @profile.payment
+        if user_signed_in?
+            if Profile.find_by(user_id: current_user.id)
+                @profile = Profile.find_by(user_id: current_user[:id])
+                @address = @profile.address
+                @payment = @profile.payment
+            else
+                redirect_to new_profile_path
+            end
+        else
+            redirect_to new_user_session_path
+        end
     end
 end

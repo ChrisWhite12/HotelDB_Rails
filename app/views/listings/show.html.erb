@@ -25,5 +25,5 @@ Incidunt tempore minima fugiat non provident doloribus laborum, laboriosam vitae
     <button type="button" class="btn btn-outline-primary"><%= link_to r[:name], room_path(r.id), :class => "room-btn"%> <%= link_to @booking_text, 
     payment_path(r.id,@search["date_from"],@search["date_to"]) %></button>
 <% } %>
-    <li><% if can? :create, @listing %><%= link_to "New Room", new_room_path(params[:id]) %><% end %></li>
+    <button type="button" class="btn btn-outline-primary"><% if can? :create, @listing %><%= link_to "New Room", new_room_path(params[:id]) %><% end %></button>
 </ul>

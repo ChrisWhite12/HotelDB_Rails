@@ -35,19 +35,19 @@
       <form action = "<%=listings_path%>" method = "GET" class="search_nav">
         <div>
           <label>Location: </label>
-          <input type="text" name="search[location]">
+          <input type="text" name="search[location]" class="search_input">
         </div>
         <div>
           <label>People: </label>
-          <input type="number" step="1" min="1" max="4" name="search[no_people]" class="search_no_people">
+          <input type="number" step="1" min="1" max="4" name="search[no_people]" class="search_no_people" class="search_input">
         </div>
         <div>
           <label>From: </label>
-          <input type="date" name="search[date_from]">
+          <input type="date" name="search[date_from]" class="search_input">
         </div>
         <div>
           <label>To: </label>
-          <input type="date" name="search[date_to]">
+          <input type="date" name="search[date_to]" class="search_input">
         </div>
         <input type="submit" value="Search">
       </form>

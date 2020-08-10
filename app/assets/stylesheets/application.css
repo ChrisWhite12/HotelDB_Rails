@@ -20,8 +20,3 @@
     justify-content: center;
     align-items: center;
 }
-.search_input{
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
-}

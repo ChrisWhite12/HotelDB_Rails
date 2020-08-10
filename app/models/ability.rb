@@ -13,6 +13,7 @@ class Ability
         can :manage, Listing, user_id: user.id
         can :manage, Room
         can :manage, Booking
+        can :read, [Room, Listing, Booking]
       elsif user.admin == 1
         can :read, [Room, Listing, Booking]
         can :manage, Profile

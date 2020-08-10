@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
         @profile = Profile.new()
         @address = Address.new()
         @payment = Payment.new()
-        @user = User.new()
+        @user = current_user
     end
 
     def create
