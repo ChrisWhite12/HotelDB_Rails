@@ -1,6 +1,26 @@
-<h1>Profile Index</h1>
-<% @profiles.each{ |profile| %>
-    <p><%= profile[:fname]%> <%= profile[:lname]%> <%= profile.user[:email]%> Admin: <%= profile.user[:admin]%> 
-    User id: <%= profile.user[:id]%> Profile id:<%= profile[:id]%> <%= link_to "Edit Profile", edit_profile_path(profile.id)%></p>
-    
-<%}%>
+<div class="page_sec">
+    <h1>Profile Index</h1>
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Admin Level</td>
+            <td>User id</td>
+            <td>Profile id</td>
+            <td>Edit Profile</td>
+        </tr>
+
+    <% @profiles.each{ |profile| %>
+        <tr>
+            <td><%= profile[:fname]%></td>
+            <td><%= profile[:lname]%></td>
+            <td><%= profile.user[:email]%></td>
+            <td><%= profile.user[:admin]%></td>
+            <td><%= profile.user[:id]%></td>
+            <td><%= profile[:id]%></td>
+            <td><%= link_to "Edit Profile", edit_profile_path(profile.id)%></td>
+        </tr>
+    <%}%>
+    </table>
+</div>

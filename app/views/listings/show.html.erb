@@ -1,29 +1,29 @@
-<div class="card mb-3" style="max-width: 800px; width: 60vw">
-    <div class="row no-gutters">
-        <div class="col-md-3">
-        <%= image_tag @listing.picture, :class => "listing_img" if @listing.picture.attached? %>
-        </div>
-        <div class="col-md-8">
-        <div class="card-body">
-            <h5 class="card-title"><%= @listing[:name] %></h5>
-            <p><%= @listing[:location] %></p>
-            <p>Id: <%= @listing[:id]%></p>
-            <% if can? :update, @listing%><%= link_to "Edit Listing", edit_listing_path(params[:id]) %><% end %>
-        </div>
+<div class="page_sec">
+    <div class="card mb-3" style="max-width: 800px; width: 60vw">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+            <%= image_tag @listing.picture, :class => "listing_img" if @listing.picture.attached? %>
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%= @listing[:name] %></h5>
+                <p><%= @listing[:location] %></p>
+                <p>Id: <%= @listing[:id]%></p>
+                <% if can? :update, @listing%><%= link_to "Edit Listing", edit_listing_path(params[:id]) %><% end %>
+            </div>
+            </div>
         </div>
     </div>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quae porro temporibus qui minima quidem doloremque maxime, tenetur quasi. Et alias eaque maiores autem molestias obcaecati dolor minus, quas repellat.
+    Maxime similique, accusamus aliquid necessitatibus totam est praesentium quam vel corporis magnam libero ducimus amet architecto numquam laborum molestiae veritatis, non, iste officia error magni. Nulla nihil atque exercitationem labore!
+    Reiciendis, velit unde ducimus, reprehenderit blanditiis saepe similique dolorum vel ipsam quisquam facilis aperiam libero nesciunt, sed laboriosam? Natus doloremque inventore officia consectetur totam repudiandae explicabo, excepturi reprehenderit sed! Rem.
+    Totam porro unde deleniti. Natus asperiores pariatur, molestiae neque vel sequi! Ad ea enim ratione nam labore soluta hic quibusdam, pariatur ab, expedita placeat. Accusamus, autem? Culpa a sit reprehenderit.
+    Incidunt tempore minima fugiat non provident doloribus laborum, laboriosam vitae sunt quae assumenda atque, earum quos fuga ipsum vel sequi corrupti. Exercitationem consequuntur deserunt deleniti sed placeat nisi sit iusto?</p>
+
+    <% @rooms.each { |r| %>
+        <button type="button" class="btn btn-outline-primary"><%= link_to r[:name], room_path(r.id), :class => "room-btn"%> <%= link_to @booking_text, 
+        payment_path(r.id,@search["date_from"],@search["date_to"]) %></button>
+    <% } %>
+        <button type="button" class="btn btn-outline-primary"><% if can? :create, @listing %><%= link_to "New Room", new_room_path(params[:id]) %><% end %></button>
 </div>
-
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quae porro temporibus qui minima quidem doloremque maxime, tenetur quasi. Et alias eaque maiores autem molestias obcaecati dolor minus, quas repellat.
-Maxime similique, accusamus aliquid necessitatibus totam est praesentium quam vel corporis magnam libero ducimus amet architecto numquam laborum molestiae veritatis, non, iste officia error magni. Nulla nihil atque exercitationem labore!
-Reiciendis, velit unde ducimus, reprehenderit blanditiis saepe similique dolorum vel ipsam quisquam facilis aperiam libero nesciunt, sed laboriosam? Natus doloremque inventore officia consectetur totam repudiandae explicabo, excepturi reprehenderit sed! Rem.
-Totam porro unde deleniti. Natus asperiores pariatur, molestiae neque vel sequi! Ad ea enim ratione nam labore soluta hic quibusdam, pariatur ab, expedita placeat. Accusamus, autem? Culpa a sit reprehenderit.
-Incidunt tempore minima fugiat non provident doloribus laborum, laboriosam vitae sunt quae assumenda atque, earum quos fuga ipsum vel sequi corrupti. Exercitationem consequuntur deserunt deleniti sed placeat nisi sit iusto?</p>
-
-<ul>
-<% @rooms.each { |r| %>
-    <button type="button" class="btn btn-outline-primary"><%= link_to r[:name], room_path(r.id), :class => "room-btn"%> <%= link_to @booking_text, 
-    payment_path(r.id,@search["date_from"],@search["date_to"]) %></button>
-<% } %>
-    <button type="button" class="btn btn-outline-primary"><% if can? :create, @listing %><%= link_to "New Room", new_room_path(params[:id]) %><% end %></button>
-</ul>

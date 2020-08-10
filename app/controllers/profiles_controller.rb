@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-    # load_and_authorize_resource
+    load_and_authorize_resource
+    before_action :set_search
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
     
     def index
@@ -12,7 +13,6 @@ class ProfilesController < ApplicationController
             redirect_to new_user_session_path
         elsif user_signed_in? && Profile.find_by(user_id: current_user[:id]) && current_user[:admin] != 3
             redirect_to profile_path(Profile.find_by(user_id: current_user[:id]).id)
-        
         end
     end
 
@@ -57,7 +57,7 @@ class ProfilesController < ApplicationController
         if can? :edit, User
             @user.update(profile_params[:user])
         end
-        redirect_to root_path
+        redirect_to profile_path(@profile.id)
     end
 
     def profile_params
@@ -74,4 +74,7 @@ class ProfilesController < ApplicationController
         @user = @profile.user
     end
 
+    def set_search
+        @search = session[:search]
+    end
 end

@@ -1,21 +1,31 @@
-<h1>Enter Details</h1>
+<div class="page_sec">
+    <div>
+        <div class="personal_field">
+            <div class="profile_data">First Name: <%= @profile[:fname]%></div>
+            <div class="profile_data">Last Name: <%= @profile[:lname]%></div>
+            <div class="profile_data">Phone: <%= @profile[:phone]%></div>
+        </div>
+        <h3 class="form_title_payment">Payment Details</h3>
+        <div class="payment_field">
+            <div class="profile_data">Card No.: ****<%= @profile.payment[:card_no].to_s.slice(-4,4)%></div>
+        </div>
+        <h3 class="form_title_address">Address Details</h3>
+        <div class="address_field">
+            <div class="profile_data">Street No.: <%= @profile.address[:street_no]%></div>
+            <div class="profile_data">Street Name: <%= @profile.address[:street_name]%></div>
+            <div class="profile_data">Suburb: <%= @profile.address[:suburb]%></div>
+            <div class="profile_data">State: <%= @profile.address[:state]%></div>
+            <div class="profile_data">Postcode: <%= @profile.address[:postcode]%></div>
+        </div>
+        <div class="profile_edit_btn">
+            <%= link_to "Edit Profile", edit_profile_path(Profile.find_by(user_id: current_user[:id]))%>
+        </div>
+    </div>
 
-<p>First Name: <%= @profile[:fname]%></p>
-<p>Last Name: <%= @profile[:lname]%></p>
-<p>Phone: <%= @profile[:phone]%></p>
 
-<p>Card No.: ****<%= @profile.payment[:card_no].to_s.slice(-4,4)%></p>
-
-<p>Street No.: <%= @profile.address[:street_no]%></p>
-<p>Street Name: <%= @profile.address[:street_name]%></p>
-<p>Suburb: <%= @profile.address[:suburb]%></p>
-<p>State: <%= @profile.address[:state]%></p>
-<p>Postcode: <%= @profile.address[:postcode]%></p>
-
-<%= link_to "Edit Profile", edit_profile_path(Profile.find_by(user_id: current_user[:id]))%>
-
-<p>Room: <%= @room[:name]%>  $<%= @room[:price]%> <%= @room[:no_people]%>ppl 
-Total: $<%= @room[:price] * @room[:no_people] * (@date_to.to_date - @date_from.to_date).to_i %> 
-Nights: <%= (@date_to.to_date - @date_from.to_date).to_i %></p>
-<p>Dates: <%= @date_from %> to <%= @date_to %></p>
-<%= link_to "Confim Booking", pay_confirm_path(@room.id, @date_from, @date_to) %>
+    <p>Room: <%= @room[:name]%>  $<%= @room[:price]%> <%= @room[:no_people]%>ppl 
+    Total: $<%= @room[:price] * @room[:no_people] * (@date_to.to_date - @date_from.to_date).to_i %> 
+    Nights: <%= (@date_to.to_date - @date_from.to_date).to_i %></p>
+    <p>Dates: <%= @date_from %> to <%= @date_to %></p>
+    <%= link_to "Confim Booking", pay_confirm_path(@room.id, @date_from, @date_to) %>
+</div>

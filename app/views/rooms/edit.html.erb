@@ -1,33 +1,34 @@
+<div class="page_sec">
+    <h3>Room: <%= @room[:name]%></h3>
+    <p>Id: <%= @room[:id]%></p>
 
-<h3>Room: <%= @room[:name]%></h3>
-<p>Id: <%= @room[:id]%></p>
+    <%= form_with(model: @room) { |form|%>
+        <div>
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+        </div>
+        <div>
+            <%= form.label :price %>
+            <%= form.text_field :price %>
+        </div>
+        <div>
+            <%= form.label :no_people %>
+            <%= form.text_field :no_people %>
+        </div>
+        <%= form.submit %>
+    <% } %>
 
-<%= form_with(model: @room) { |form|%>
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
-    <div>
-        <%= form.label :price %>
-        <%= form.text_field :price %>
-    </div>
-    <div>
-        <%= form.label :no_people %>
-        <%= form.text_field :no_people %>
-    </div>
-    <%= form.submit %>
-<% } %>
+    <%= link_to "Delete Room", delete_room_path(@room[:id]),method: :delete, data: {confirm: "Are you sure?"}%>
 
-<%= link_to "Delete Room", delete_room_path(@room[:id]),method: :delete, data: {confirm: "Are you sure?"}%>
-
-<%= month_calendar events: @bookings do |date, bookings| %>
-    <%= date.day %>
-    <% bookings.each do |b| %>
-        <% if b[:aval] %>
-            <p>Vacant</p>
-        <% else %>
-            <p>No Vacancy</p>
+    <%= month_calendar events: @bookings do |date, bookings| %>
+        <%= date.day %>
+        <% bookings.each do |b| %>
+            <% if b[:aval] %>
+                <p>Vacant</p>
+            <% else %>
+                <p>No Vacancy</p>
+            <% end %>
         <% end %>
     <% end %>
-<% end %>
+</div>
 

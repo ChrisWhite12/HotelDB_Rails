@@ -1,6 +1,17 @@
-<h1>Booking Index</h1>
-<% @bookings.each{ |booking| %>
-    <p>Listing: <%= booking.room.listing[:name] %>, Room: <%= booking.room[:name]%>, Date: <%= booking[:date]%></p>
-
-
-<% } %>
+<div class="page_sec">
+    <h1>Booking Index</h1>
+    <table>
+        <tr>
+            <td>Listing</td>
+            <td>Room</td>
+            <td>Date</td>
+        </tr>
+        <% @bookings.each{ |booking| %>
+            <tr>
+                <td><%= booking.room.listing[:name] %></td>
+                <td><%= booking.room[:name]%></td>
+                <td><%= booking[:date]%></td>
+            </tr>
+        <% } %>
+    </table>
+</div>

@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_08_05_050346) do
     t.integer "card_no"
     t.string "card_name"
     t.integer "CSV"
-    t.date "expiry"
+    t.string "expiry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

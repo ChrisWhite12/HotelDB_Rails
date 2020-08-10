@@ -1,1 +1,7 @@
+<div class="page_sec">
     <h1>Payment Confirmed</h1>
+    <p>Booking made for Listing: <%= @room.listing[:name]%>  Room: <%= @room[:name]%>  $<%= @room[:price]%> <%= @room[:no_people]%>ppl 
+    Total: $<%= @room[:price] * @room[:no_people] * (@date_to.to_date - @date_from.to_date).to_i %> 
+    Nights: <%= (@date_to.to_date - @date_from.to_date).to_i %></p>
+    <p>Dates: <%= @date_from %> to <%= @date_to %></p>
+</div>

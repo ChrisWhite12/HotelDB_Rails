@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
     load_and_authorize_resource
+    before_action :set_search
     before_action :set_room, only: [:show, :edit, :update, :destroy]
     before_action :set_listing, only: [:new, :create]
     def show
@@ -57,5 +58,9 @@ class RoomsController < ApplicationController
     end
     def room_params
         params.require(:room).permit(:name,:price,:no_people)
+    end
+
+    def set_search
+        @search = session[:search]
     end
 end

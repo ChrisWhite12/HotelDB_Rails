@@ -1,13 +1,22 @@
-$border_color1: #ffa837;
-$back_color1: #e9e29c;
-$back_color2: #f1cb92;
+@import "variables.scss";
 
 @import "room.scss";
+@import "profile.scss";
+
+
+@media only screen and (min-width: 600px){
+
+}
+@media only screen and (max-width: 600px){
+
+}
+
 body{
     background-color: $back_color1;
 }
 
 .main_sec{
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,7 +33,6 @@ body{
 }
 .navbar{
     display: flex;
-    flex-direction: column;
     box-shadow: inset 0px 0px 2px 2px $border_color1;
     background-color: $back_color2 !important;
 }
@@ -41,14 +49,38 @@ body{
 }
 .back_1{
     width: 100vw;
-    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    object-fit: fill; 
+    flex-grow: 1;
 }
 .search_nav{
     display: flex;
     justify-content: space-between;
     margin: 5px;
+}
+
+td{
+    padding: 5px;
+}
+
+.page_sec{
+    border: 2px solid $border_color1;
+    border-radius: 10px;
+    background-color: $back_color2;
+    width: 95vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    padding: 10px;
+    table{
+        width: 70vw;
+        td{
+            border: 1px solid grey;
+        }
+    }
 }

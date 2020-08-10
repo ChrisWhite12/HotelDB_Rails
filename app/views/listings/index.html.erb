@@ -1,9 +1,9 @@
-<div>
+<div class="page_sec">
     <% @listings.each{ |list| %>
 
         <div class="card mb-3" style="max-width: 800px; width: 60vw">
         <div class="row no-gutters">
-            <div class="col-md-3">
+            <div class="col-md-3"  style="background-color: gray">
             <%= image_tag list.picture, :class => "listing_img" if list.picture.attached? %>
             </div>
             <div class="col-md-8">
@@ -19,4 +19,4 @@
 </div>
 
 
-<li><% if can? :create, Listing %><%= link_to "New Listing", new_listing_path %><% end %></li>
+<% if can? :create, Listing %><%= link_to "New Listing", new_listing_path %><% end %>

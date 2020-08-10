@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
     load_and_authorize_resource
+    before_action :set_search
     before_action :print_params
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
     # after_action :print_db
@@ -44,7 +45,7 @@ class ListingsController < ApplicationController
         p "cookie - search"
         pp @search
         p @search['no_people']
-        # @rooms = Rooms.where(no_people: params[:search][:no_people])
+        
         @booking_text = ""
 
         if @search != {}
@@ -116,5 +117,11 @@ class ListingsController < ApplicationController
 
     def search_params
         params.require(:search).permit(:location, :no_people, :date_from, :date_to)
+    end
+
+    def set_search
+        @search = session[:search]
+        p "----]]]]----"
+        pp @search
     end
 end
