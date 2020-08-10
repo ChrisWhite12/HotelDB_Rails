@@ -35,7 +35,7 @@
     <% if can? :edit, User %>
         <%= form.fields_for @user do |user_form|%>
             <%= user_form.label :admin %>
-            <%= user_form.select :admin, [["Customer", 0],["Seller", 1],["Admin", 2]]%>
+            <%= user_form.select :admin, [["Customer", 1],["Seller", 2],["Admin", 3]]%>
         <% end %>
     <% end %>
 

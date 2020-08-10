@@ -7,13 +7,13 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
       user ||= User.new # guest user (not logged in)
-      if user.admin == 2      #if admin
+      if user.admin == 3      #if admin
         can :manage, :all
-      elsif user.admin == 1   #if seller
+      elsif user.admin == 2   #if seller
         can :manage, Listing, user_id: user.id
         can :manage, Room
         can :manage, Booking
-      elsif user.admin == 0
+      elsif user.admin == 1
         can :read, [Room, Listing, Booking]
         can :manage, Profile
       else

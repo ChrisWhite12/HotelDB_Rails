@@ -14,9 +14,12 @@ body{
     align-items: center;
     background-color: $back_color1;
 }
-.search_input{
+.search_div{
     display: flex;
     justify-content: space-between;
+    margin: 5px;
+}
+.search_input{
     margin: 5px;
 }
 .navbar{
@@ -24,7 +27,6 @@ body{
     flex-direction: column;
     box-shadow: inset 0px 0px 2px 2px $border_color1;
     background-color: $back_color2 !important;
-    height: 20vh;
 }
 .search_no_people{
     width: 50px;
@@ -44,4 +46,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.search_nav{
+    display: flex;
 }

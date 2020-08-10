@@ -1,22 +1,22 @@
 <div class="back_1" style= "background-image: linear-gradient(rgba(0, 100, 100, 0.5), rgba(100, 100, 100, 0.8)), url(<%= asset_path 'home.jpg' %>);">
-    <div class="card bg-light mb-3" style="max-width: 25rem; width: 25vw">
+    <div class="card bg-light mb-3" style="max-width: 25rem">
         <div class="card-body">
             <form action = "<%=listings_path%>" method = "GET" class="search_bar">
-                <div class="search_input">
+                <div class="search_div">
                     <label>Location: </label>
-                    <input type="text" name="search[location]">
+                    <input type="text" name="search[location]" class="search_input">
                 </div>
-                <div class="search_input">
+                <div class="search_div">
                     <label>People: </label>
-                    <input type="number" step="1" min="1" max="4" name="search[no_people]">
+                    <input type="number" step="1" min="1" max="4" name="search[no_people]" class="search_input">
                 </div>
-                <div class="search_input">
+                <div class="search_div">
                     <label>From: </label>
-                    <input type="date" name="search[date_from]">
+                    <input type="date" name="search[date_from]" class="search_input">
                 </div>
-                <div class="search_input">
+                <div class="search_div">
                     <label>To: </label>
-                    <input type="date" name="search[date_to]">
+                    <input type="date" name="search[date_to]" class="search_input">
                 </div>
                 <input type="submit" value="Search">
             </form>

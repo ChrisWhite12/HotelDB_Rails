@@ -1,16 +1,16 @@
 class ProfilesController < ApplicationController
-    load_and_authorize_resource
+    # load_and_authorize_resource
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
     
     def index
         if user_signed_in? && !Profile.find_by(user_id: current_user[:id])
             p 'NEW INFO'
             redirect_to new_profile_path
-        elsif current_user[:admin] == 2
+        elsif current_user[:admin] == 3
             @profiles = Profile.all()
         elsif !user_signed_in?
             redirect_to new_user_session_path
-        elsif user_signed_in? && Profile.find_by(user_id: current_user[:id]) && current_user[:admin] != 2
+        elsif user_signed_in? && Profile.find_by(user_id: current_user[:id]) && current_user[:admin] != 3
             redirect_to profile_path(Profile.find_by(user_id: current_user[:id]).id)
         
         end
@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
 
     def create
         p "----------"
+        p "create"
         p profile_params
         p profile_params[:payments]
         p profile_params[:address]
@@ -48,7 +49,7 @@ class ProfilesController < ApplicationController
     end
 
     def update
-        
+        p "update"
         @payment.update(profile_params[:payment])
         @address.update(profile_params[:address])
         @profile.update(fname: profile_params[:fname], lname: profile_params[:lname], phone: profile_params[:phone])
@@ -60,10 +61,9 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-        params.require(:profile).permit(:fname, :lname, :phone,
-            address:[:street_no, :street_name, :suburb, :state, :postcode],
-            payment:[:card_no, :card_name, :CSV, :expiry],
-            user:[:admin]
+            params.require(:profile).permit(:fname, :lname, :phone, address: [:street_no, :street_name, :suburb, :state, :postcode],
+            payment: [:card_no, :card_name, :CSV, :expiry],
+            user: [:admin]
         )
     end
 
