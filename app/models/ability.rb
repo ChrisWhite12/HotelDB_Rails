@@ -16,7 +16,6 @@ class Ability
         can :read, [Room, Listing, Booking]
       elsif user.admin == 1
         can :read, [Room, Listing, Booking]
-        can :manage, Profile
       else
         can :read, Listing
       end

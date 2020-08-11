@@ -33,8 +33,21 @@ class ListingsController < ApplicationController
         
         #if a search, get params
         if params[:search] != nil
-            session[:search] = search_params
-            @listings = Listing.where(location: params[:search][:location].downcase.capitalize)
+            #check params
+            if (params[:search][:location] != '' && params[:search][:no_people] != '' &&
+            params[:search][:date_from] != '' && params[:search][:date_to] != '')
+                #check if the dates are valid
+                if (Date.parse(params[:search][:date_to]) - Date.parse(params[:search][:date_from])) >= 1
+                    session[:search] = search_params
+                    @listings = Listing.where(location: params[:search][:location].downcase.capitalize)
+                else
+                    p 'wrong dates'
+                    redirect_to root_path
+                end
+            else
+                p 'incomplete search'
+                redirect_to root_path
+            end
         else
             @listings = Listing.where(user_id: current_user.id)
         end

@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   get "/pages/payment/:room_id", to: "pages#payment", as: "payment"
   get "/pages/pay_confirm/:room_id/:date_from/:date_to", to: "pages#pay_confirm", as: "pay_confirm"
+  
   get "/payments", to: "payments#index", as: "payments"
 
   get "/addresses", to: "addresses#index", as: "addresses"
