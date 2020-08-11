@@ -14,7 +14,7 @@ class Ability
         can :manage, Room
         can :manage, Booking
         can :read, [Room, Listing, Booking]
-      elsif user.admin == 1
+      elsif user.admin == 1   #if customer
         can :read, [Room, Listing, Booking]
       else
         can :read, Listing

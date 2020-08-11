@@ -1,25 +1,21 @@
 class BookingsController < ApplicationController
     load_and_authorize_resource
-    before_action :set_search
     
     def index
+        #set bookings for current user
         @bookings = Booking.where(user_id: current_user[:id])
         pp @bookings
     end
 
     def show
+        #set bookings for current user
         @bookings = Booking.where(user_id: current_user[:id])
     end
-
-    def destroy
-
-    end
+    
+    private
 
     def booking_params
+        #permit only date and aval
         params.require(:booking).permit(:date,:aval)
-    end
-
-    def set_search
-        @search = session[:search]
     end
 end
