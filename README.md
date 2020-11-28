@@ -117,25 +117,25 @@ Home Page
 ![Home page](./docs/wireframe.png)
 
 Listing Index
-![Listing Index page](./docs/Listing_Index.png)
+![Listing Index page](./docs/Listing_index.png)
 
 Show single Listing
-![Listing Show page](./docs/Listing_show.png)
+![Listing Show page](./docs/Listing_Show.png)
 
 Editing a Listing
-![Listing Edit page](./docs/Edit_listing.png)
+![Listing Edit page](./docs/Edit_Listing.png)
 
 Viewing a room
 ![Listing Show page](./docs/View_Room.png)
 
 Editing a room
-![Room Edit page](./docs/Edit_room.png)
+![Room Edit page](./docs/Edit_Room.png)
 
 Payment page
 ![Payment Page](./docs/Payment.png)
 
 Payment Confirm page
-![Pay Confirm page](./docs/Payment_confirm.png)
+![Pay Confirm page](./docs/Payment_Confirm.png)
 
 New Profile
 ![Profile new page](./docs/Profile_New.png)
@@ -144,7 +144,7 @@ Profile Index
 ![Profile Index page](./docs/Profile_Index.png)
 
 An ERD for your app
-![ERD](./docs/HotelDB.png)
+![ERD](./docs/hoteldb.png)
 
 ---
 
